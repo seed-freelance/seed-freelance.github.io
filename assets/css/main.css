@@ -347,6 +347,18 @@ main section:first-child {
   margin: 0;
 }
 
+/* ---------- reveal (JS adds classes; final state lives in HTML) ---------- */
+
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(0.75rem);
+}
+.revealed {
+  opacity: 1;
+  transform: none;
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 640px) {
