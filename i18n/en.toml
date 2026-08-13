@@ -35,11 +35,13 @@ other = "See the work"
 other = "See related work"
 
 # Portfolio
-[filter_all]
+[filter_group_label]
+other = "Filter projects by category"
+[cat_all]
 other = "All"
-[filter_ai]
+[cat_ai_engineering]
 other = "AI Engineering"
-[filter_web]
+[cat_web_development]
 other = "Web Development"
 [label_client]
 other = "Client project"

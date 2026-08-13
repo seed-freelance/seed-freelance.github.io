@@ -1,0 +1,16 @@
+{{- /* Per-category filter rules, generated from the categories actually used
+       so adding a category in content requires no CSS change. Pure CSS: the
+       filter works with JavaScript disabled. */ -}}
+{{- $items := (site.GetPage "/portfolio").RegularPages -}}
+{{- $cats := slice -}}
+{{- range $items }}{{ range .Params.categories }}{{ $cats = $cats | append . }}{{ end }}{{ end -}}
+{{- $cats = uniq $cats -}}
+{{- $css := "" -}}
+{{- range $cats -}}
+{{- $css = printf "%s#filter-%s:checked ~ .cards .card:not([data-cats~=\"%s\"]){display:none}" $css . . -}}
+{{- end -}}
+{{- range (slice "all" | append $cats) -}}
+{{- $css = printf "%s#filter-%s:checked ~ .filter-labels label[for=\"filter-%s\"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}" $css . . -}}
+{{- $css = printf "%s#filter-%s:focus-visible ~ .filter-labels label[for=\"filter-%s\"]{outline:2px solid var(--accent);outline-offset:3px}" $css . . -}}
+{{- end -}}
+<style>{{ $css | safeCSS }}</style>

@@ -35,11 +35,13 @@ other = "Voir les réalisations"
 other = "Voir les projets liés"
 
 # Portfolio
-[filter_all]
+[filter_group_label]
+other = "Filtrer les réalisations par catégorie"
+[cat_all]
 other = "Tout"
-[filter_ai]
+[cat_ai_engineering]
 other = "Ingénierie IA"
-[filter_web]
+[cat_web_development]
 other = "Développement web"
 [label_client]
 other = "Projet client"
@@ -52,7 +54,7 @@ other = "Voir le site"
 [link_code]
 other = "Voir le code"
 [link_writeup]
-other = "Lire l'article"
+other = "Lire l'article (en anglais)"
 
 # Contact form
 [form_name]

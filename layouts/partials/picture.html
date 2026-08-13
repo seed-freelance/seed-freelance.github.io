@@ -1,0 +1,20 @@
+{{- /* Responsive image via Hugo Pipes: WebP srcset + original-format
+       fallback, lazy-loaded, explicit dimensions against layout shift.
+       Params: img (resource), alt (string), sizes (string, optional). */ -}}
+{{- $img := .img -}}
+{{- $alt := .alt | default "" -}}
+{{- $sizes := .sizes | default "100vw" -}}
+{{- $widths := slice 400 800 1200 -}}
+{{- $webp := slice -}}
+{{- range $widths -}}
+{{- if le . $img.Width -}}
+{{- $webp = $webp | append ($img.Process (printf "resize %dx webp q80" .)) -}}
+{{- end -}}
+{{- end -}}
+{{- if not $webp -}}{{- $webp = slice ($img.Process "webp q80") -}}{{- end -}}
+{{- $fallbackWidth := math.Min 800 $img.Width -}}
+{{- $fallback := $img.Process (printf "resize %vx" $fallbackWidth) -}}
+<picture>
+  <source type="image/webp" srcset="{{ range $i, $r := $webp }}{{ if $i }}, {{ end }}{{ $r.RelPermalink }} {{ $r.Width }}w{{ end }}" sizes="{{ $sizes }}">
+  <img src="{{ $fallback.RelPermalink }}" alt="{{ $alt }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" loading="lazy" decoding="async">
+</picture>

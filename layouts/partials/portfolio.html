@@ -1,4 +1,26 @@
+{{ $items := (site.GetPage "/portfolio").RegularPages.ByWeight }}
+{{ $cats := slice }}
+{{ range $items }}{{ range .Params.categories }}{{ $cats = $cats | append . }}{{ end }}{{ end }}
+{{ $cats = uniq $cats }}
 <section class="portfolio" id="portfolio">
   <h2>{{ i18n "section_portfolio" }}</h2>
-  {{- /* Cards rendered from content/portfolio bundles in the portfolio milestone. */ -}}
+  <div class="portfolio-body">
+    <input class="sr-radio" type="radio" id="filter-all" name="portfolio-filter" value="all" checked>
+    {{ range $cats }}
+    <input class="sr-radio" type="radio" id="filter-{{ . }}" name="portfolio-filter" value="{{ . }}">
+    {{ end }}
+    <div class="filter-labels" role="group" aria-label="{{ i18n "filter_group_label" }}">
+      <label for="filter-all">{{ i18n "cat_all" }}</label>
+      {{ range $cats }}
+      <label for="filter-{{ . }}">{{ i18n (printf "cat_%s" (replace . "-" "_")) }}</label>
+      {{ end }}
+    </div>
+    <ul class="cards">
+      {{ range $items }}
+      <li class="card{{ if .Params.featured }} card-featured{{ end }}" data-cats="{{ delimit .Params.categories " " }}">
+        {{ partial "card.html" . }}
+      </li>
+      {{ end }}
+    </ul>
+  </div>
 </section>

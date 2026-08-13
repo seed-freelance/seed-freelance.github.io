@@ -1,0 +1,83 @@
+<article class="card-inner">
+  {{ $img := "" }}
+  {{ with .Params.screenshot }}{{ $img = $.Resources.Get . }}{{ end }}
+  {{ if $img }}
+  <div class="card-media">
+    {{ partial "picture.html" (dict "img" $img "alt" .Params.screenshot_alt "sizes" (cond (isset .Params "featured") "(min-width: 900px) 46vw, 92vw" "(min-width: 900px) 44vw, 92vw")) }}
+  </div>
+  {{ end }}
+  <div class="card-content">
+    <p class="card-type">
+      {{- if eq .Params.project_type "client" -}}
+      {{ i18n "label_client" }} · {{ i18n "built_for" }} {{ .Params.client }}
+      {{- else -}}
+      {{ i18n "label_personal" }}
+      {{- end -}}
+    </p>
+    <h3>{{ .Title }}</h3>
+    <p class="card-tagline">{{ .Params.tagline }}</p>
+    <div class="card-summary">{{ .Content }}</div>
+
+    {{ with .Params.metrics }}
+    <ul class="stats">
+      {{ range . }}
+      <li class="stat reveal">
+        <span class="stat-figure">{{ .figure }}<span class="stat-symbol">{{ .symbol }}</span></span>
+        <span class="stat-label">{{ .label }}</span>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    {{ with .Params.testimonial }}
+    <figure class="testimonial">
+      <blockquote>{{ . }}</blockquote>
+      {{ with $.Params.testimonial_author }}<figcaption>— {{ . }}</figcaption>{{ end }}
+    </figure>
+    {{ end }}
+
+    {{ with .Params.specs }}
+    <ul class="specs">
+      {{ range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+
+    {{ with .Params.showcase }}
+    <ul class="sites-grid">
+      {{ range . }}
+      <li class="site-entry">
+        {{ $shot := $.Resources.Get .screenshot }}
+        {{ if $shot }}
+        <a href="{{ .url }}">{{ partial "picture.html" (dict "img" $shot "alt" (printf "%s — %s" .name .note) "sizes" "(min-width: 900px) 22vw, 46vw") }}</a>
+        {{ end }}
+        <p class="site-name"><a href="{{ .url }}">{{ .name }}</a></p>
+        <p class="site-note">{{ .note }}</p>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    {{ with .Params.tech }}
+    <dl class="tech">
+      {{ range . }}
+      <div class="tech-group">
+        <dt>{{ .group }}</dt>
+        <dd>
+          <ul class="tech-tags">
+            {{ range .items }}<li>{{ . }}</li>{{ end }}
+          </ul>
+        </dd>
+      </div>
+      {{ end }}
+    </dl>
+    {{ end }}
+
+    {{ with .Params.links }}
+    <p class="card-links">
+      {{ range . }}
+      <a href="{{ .url }}" rel="noopener">{{ i18n (printf "link_%s" .kind) }} ↗</a>
+      {{ end }}
+    </p>
+    {{ end }}
+  </div>
+</article>
