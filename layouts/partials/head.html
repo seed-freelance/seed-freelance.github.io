@@ -7,6 +7,8 @@
 {{ end -}}
 <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
 {{ partial "seo/meta.html" . }}
+<link rel="preload" href="/fonts/bricolage-grotesque-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 {{ with resources.Get "css/main.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ .RelPermalink }}">
 {{ end }}
