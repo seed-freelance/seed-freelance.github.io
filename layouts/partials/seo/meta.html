@@ -1,1 +1,24 @@
-{{- /* Filled in the SEO milestone: Open Graph, canonical, JSON-LD. */ -}}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- /* x-default points to the default-language version of this page */ -}}
+{{ $xdefault := . }}
+{{ range .Translations }}{{ if eq .Language.Lang "en" }}{{ $xdefault = . }}{{ end }}{{ end }}
+<link rel="alternate" hreflang="x-default" href="{{ $xdefault.Permalink }}">
+<meta name="theme-color" content="#f7f7f4">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.Params.brand }}">
+<meta property="og:title" content="{{ site.Title }}">
+<meta property="og:description" content="{{ site.Params.description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="{{ site.Language.Locale }}">
+{{ range .Translations -}}
+<meta property="og:locale:alternate" content="{{ .Language.Locale }}">
+{{ end -}}
+{{ with resources.Get "og/og-image.png" -}}
+<meta property="og:image" content="{{ .Permalink }}">
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+<meta name="twitter:card" content="summary_large_image">
+{{ end -}}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+{{ if .IsHome }}{{ partial "seo/jsonld.html" . }}{{ end }}

@@ -1,0 +1,16 @@
+{{- $person := dict
+  "@type" "Person"
+  "name" site.Params.author
+  "url" site.Params.personalSite
+  "sameAs" (slice site.Params.social.github site.Params.social.linkedin)
+-}}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "ProfessionalService"
+  "name" site.Params.brand
+  "url" site.Home.Permalink
+  "description" site.Params.description
+  "founder" $person
+  "areaServed" "Europe"
+-}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
