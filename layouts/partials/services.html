@@ -1,4 +1,13 @@
+{{ $lang := site.Language.Lang }}
 <section class="services" id="services">
   <h2>{{ i18n "section_services" }}</h2>
-  {{- /* Cards rendered from data/services.yaml in the services milestone. */ -}}
+  <div class="service-grid">
+    {{ range hugo.Data.services }}
+    <article class="service">
+      <h3>{{ index .title $lang }}</h3>
+      <p>{{ index .description $lang }}</p>
+      <a class="service-link" href="#portfolio" data-filter="{{ .filter }}">{{ i18n "services_view_work" }} →</a>
+    </article>
+    {{ end }}
+  </div>
 </section>

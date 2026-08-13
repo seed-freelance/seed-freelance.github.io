@@ -1,0 +1,56 @@
+# Services shown on the homepage, in order.
+# Each service cross-links to a filtered portfolio view via `filter`
+# (must match a category id used in content/portfolio front matter).
+- id: ai-automation
+  filter: ai-engineering
+  title:
+    en: AI automation
+    fr: Automatisation IA
+  description:
+    en: >-
+      Repetitive document work, automated: vision models that read photographed
+      or scanned documents, extract structured data, and flag what needs a human
+      decision. For Helicon IA, FootCheck reads football match sheets and
+      identifies suspended players — replacing a manual check for every round.
+    fr: >-
+      Le travail documentaire répétitif, automatisé : des modèles de vision qui
+      lisent des documents photographiés ou scannés, en extraient des données
+      structurées et signalent ce qui demande une décision humaine. Pour
+      Helicon IA, FootCheck lit les feuilles de match de football et identifie
+      les joueurs suspendus — en remplacement d'une vérification manuelle à
+      chaque journée.
+
+- id: ai-agents
+  filter: ai-engineering
+  title:
+    en: AI agents
+    fr: Agents IA
+  description:
+    en: >-
+      Assistants that do real work under your control: RAG systems grounded in
+      your own documents with cited sources, email and calendar agents with
+      human-in-the-loop approval before every action, on local or hosted models
+      — with graceful fallbacks when the model is unavailable.
+    fr: >-
+      Des assistants qui travaillent vraiment, sous votre contrôle : des
+      systèmes RAG ancrés dans vos propres documents avec sources citées, des
+      agents email et agenda avec validation humaine avant chaque action, sur
+      des modèles locaux ou hébergés — avec des solutions de repli quand le
+      modèle est indisponible.
+
+- id: web-development
+  filter: web-development
+  title:
+    en: Web design & development
+    fr: Design & développement web
+  description:
+    en: >-
+      From a multilingual site your team edits without a developer to a
+      full-stack application with authentication and an API. This site is
+      itself a deliverable: a custom Hugo build, bilingual, accessible,
+      statically hosted — view the source if you like.
+    fr: >-
+      D'un site multilingue que votre équipe met à jour sans développeur à une
+      application full-stack avec authentification et API. Ce site est
+      lui-même un livrable : un développement Hugo sur mesure, bilingue,
+      accessible, hébergé statiquement — la source est consultable.

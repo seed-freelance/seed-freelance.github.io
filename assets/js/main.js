@@ -76,6 +76,24 @@ if (restored) {
   }
 }
 
+// Service cards deep-link into a filtered portfolio view. Without JS the
+// href is a plain #portfolio anchor (all items visible).
+for (const link of document.querySelectorAll('a[data-filter]')) {
+  link.addEventListener('click', (event) => {
+    const radio = document.querySelector(
+      `input[name="portfolio-filter"][value="${link.dataset.filter}"]`
+    );
+    if (!radio) return;
+    event.preventDefault();
+    radio.checked = true;
+    history.pushState(null, '', `#portfolio.${link.dataset.filter}`);
+    setCurrent('portfolio');
+    document
+      .getElementById('portfolio')
+      ?.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth' });
+  });
+}
+
 // The language switcher is a plain link to the translated page; fragments are
 // not carried across navigations by default, so append the current one on click.
 for (const langLink of document.querySelectorAll('.lang-switch')) {

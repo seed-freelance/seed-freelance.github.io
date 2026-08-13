@@ -314,6 +314,45 @@ main section:first-child {
   max-width: 62ch;
 }
 
+/* ---------- services ---------- */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.service {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+}
+
+.service p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  flex-grow: 1;
+}
+
+.service-link {
+  font-family: var(--font-mono);
+  font-size: var(--step-mono);
+  text-decoration: none;
+}
+.service-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- footer ---------- */
 
 .site-footer {
