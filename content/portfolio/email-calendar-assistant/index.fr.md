@@ -5,7 +5,7 @@ categories: ["ai-engineering"]
 project_type: "personal"
 weight: 30
 screenshot: "poster.png"
-screenshot_alt: "La boîte de réception Streamlit de l'assistant, avec les emails classés et un brouillon de réponse en attente de validation."
+screenshot_alt: "La boîte de réception de l'assistant : un email classé comme demande de réunion avec score de confiance, et les actions pour classer, planifier la réunion ou approuver l'expéditeur."
 tech:
   - group: "IA"
     items: ["LangChain", "LLM HuggingFace"]

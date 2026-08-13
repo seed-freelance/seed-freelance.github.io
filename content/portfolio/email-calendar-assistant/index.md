@@ -5,7 +5,7 @@ categories: ["ai-engineering"]
 project_type: "personal"
 weight: 30
 screenshot: "poster.png"
-screenshot_alt: "The Streamlit inbox of the assistant showing classified emails and a drafted reply awaiting approval."
+screenshot_alt: "The assistant's inbox showing an email classified as a meeting request with a confidence score, and actions to classify, schedule the meeting, or trust the sender."
 tech:
   - group: "AI"
     items: ["LangChain", "HuggingFace LLMs"]
