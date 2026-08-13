@@ -1,0 +1,11 @@
+{{ with .Params.hero }}
+<section class="hero" id="top">
+  <p class="eyebrow">{{ .eyebrow }}</p>
+  <h1>{{ .headline }}</h1>
+  <p class="hero-sub">{{ .sub }}</p>
+  <p class="hero-actions">
+    <a class="button" href="#contact">{{ i18n "cta_contact" }}</a>
+    <a class="button button-ghost" href="#portfolio">{{ i18n "cta_work" }}</a>
+  </p>
+</section>
+{{ end }}

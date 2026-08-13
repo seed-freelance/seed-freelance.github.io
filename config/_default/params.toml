@@ -1,0 +1,12 @@
+brand = "Seed AI"
+author = "Pierre Aumjaud"
+personalSite = "https://pierreaumjaud.com/"
+
+[social]
+github = "https://github.com/PierreExeter"
+linkedin = "https://www.linkedin.com/in/pierreaumjaud"
+
+[contact]
+# The Web3Forms access key is injected at build time via the
+# HUGO_WEB3FORMS_KEY environment variable — never committed.
+endpoint = "https://api.web3forms.com/submit"

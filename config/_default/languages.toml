@@ -1,0 +1,15 @@
+[en]
+locale = "en"
+label = "English"
+weight = 1
+title = "Seed AI — AI automation, AI agents, web design & development"
+[en.params]
+description = "Seed AI is the freelance practice of Pierre Aumjaud: AI automation, AI agents, and web design & development for businesses in Europe."
+
+[fr]
+locale = "fr"
+label = "Français"
+weight = 2
+title = "Seed AI — Automatisation IA, agents IA, création de sites web"
+[fr.params]
+description = "Seed AI est l'activité freelance de Pierre Aumjaud : automatisation IA, agents IA et création de sites et d'applications web pour les entreprises en Europe."

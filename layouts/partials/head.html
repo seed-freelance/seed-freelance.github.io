@@ -1,0 +1,12 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.Title }}</title>
+<meta name="description" content="{{ site.Params.description }}">
+{{ range .Translations -}}
+<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{ end -}}
+<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{ partial "seo/meta.html" . }}
+{{ with resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+{{ end }}

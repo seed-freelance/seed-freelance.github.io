@@ -1,0 +1,85 @@
+# Navigation
+[nav_about]
+other = "À propos"
+[nav_services]
+other = "Services"
+[nav_portfolio]
+other = "Réalisations"
+[nav_contact]
+other = "Contact"
+[skip_to_content]
+other = "Aller au contenu"
+[menu_toggle]
+other = "Menu"
+[lang_switch_label]
+other = "Read this page in English"
+
+# Section headings
+[section_about]
+other = "À propos"
+[section_services]
+other = "Services"
+[section_portfolio]
+other = "Réalisations"
+[section_contact]
+other = "Contact"
+
+# Hero
+[cta_contact]
+other = "Discuter de votre projet"
+[cta_work]
+other = "Voir les réalisations"
+
+# Services
+[services_view_work]
+other = "Voir les projets liés"
+
+# Portfolio
+[filter_all]
+other = "Tout"
+[filter_ai]
+other = "Ingénierie IA"
+[filter_web]
+other = "Développement web"
+[label_client]
+other = "Projet client"
+[label_personal]
+other = "Projet personnel"
+[built_for]
+other = "Réalisé pour"
+[link_site]
+other = "Voir le site"
+[link_code]
+other = "Voir le code"
+[link_writeup]
+other = "Lire l'article"
+
+# Contact form
+[form_name]
+other = "Nom"
+[form_email]
+other = "Email"
+[form_message]
+other = "Votre projet"
+[form_send]
+other = "Envoyer le message"
+[form_sending]
+other = "Envoi en cours…"
+[form_success]
+other = "Merci, votre message est bien parti. Je réponds sous un jour ouvré."
+[form_error]
+other = "Une erreur est survenue et le message n'a pas été envoyé. Merci de réessayer dans un instant."
+[form_required]
+other = "Ce champ est obligatoire."
+[form_invalid_email]
+other = "Merci de saisir une adresse email valide."
+[form_not_configured]
+other = "Le formulaire de contact n'est pas configuré dans cette version du site."
+[form_privacy]
+other = "Votre message arrive directement dans ma boîte mail — pas de compte, pas de liste de diffusion."
+
+# Footer
+[footer_technical_profile]
+other = "Profil technique & publications"
+[footer_built_with]
+other = "Site conçu et développé par Pierre Aumjaud avec Hugo — il fait lui-même partie du portfolio."
