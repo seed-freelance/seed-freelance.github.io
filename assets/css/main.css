@@ -429,12 +429,23 @@ main section:first-child {
   border-bottom: none;
   border-right: 1px solid var(--line);
   height: 100%;
+  padding: var(--space-3);
 }
 .card-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
+}
+/* The featured screenshot keeps its natural aspect, framed on the paper
+   ground, rather than being crop-filled to the column height. */
+.card-featured .card-media img {
+  height: auto;
+  object-fit: initial;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  position: sticky;
+  top: 5rem;
 }
 
 .card-content {
