@@ -103,7 +103,67 @@ for (const langLink of document.querySelectorAll('.lang-switch')) {
   });
 }
 
-// --- 3. Reveal-on-scroll ------------------------------------------------------
+// --- 3. Contact form ----------------------------------------------------------
+// Without JS the form POSTs to the endpoint and redirects back to the site's
+// own localized thanks page. With JS: inline validation and status, no leave.
+
+const form = document.querySelector('.contact-form');
+if (form) {
+  form.setAttribute('novalidate', '');
+  const status = form.querySelector('.form-status');
+  const button = form.querySelector('button[type="submit"]');
+  const fields = [...form.querySelectorAll('input[required], textarea[required]')];
+
+  const messageFor = (field) => {
+    if (field.validity.valueMissing) return form.dataset.msgRequired;
+    if (field.validity.typeMismatch) return form.dataset.msgEmail;
+    return '';
+  };
+
+  const refreshField = (field) => {
+    const slot = document.getElementById(`err-${field.name}`);
+    const msg = messageFor(field);
+    if (slot) slot.textContent = msg;
+    field.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    return !msg;
+  };
+
+  for (const field of fields) {
+    field.addEventListener('input', () => refreshField(field));
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const invalid = fields.filter((field) => !refreshField(field));
+    if (invalid.length) {
+      invalid[0].focus();
+      return;
+    }
+    const data = new FormData(form);
+    data.delete('redirect'); // inline status replaces the no-JS redirect
+    button.disabled = true;
+    status.className = 'form-status';
+    status.textContent = form.dataset.sending;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      status.textContent = form.dataset.success;
+      status.classList.add('is-success');
+    } catch {
+      status.textContent = form.dataset.error;
+      status.classList.add('is-error');
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+
+// --- 4. Reveal-on-scroll ------------------------------------------------------
 // Elements opt in with class "reveal". Final state is always in the HTML;
 // the animation is purely decorative and skipped for reduced motion.
 

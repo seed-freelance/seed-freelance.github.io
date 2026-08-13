@@ -75,6 +75,8 @@ other = "Something went wrong and the message was not sent. Please try again in 
 other = "This field is required."
 [form_invalid_email]
 other = "Please enter a valid email address."
+[form_subject]
+other = "New inquiry via seedfreelance.com"
 [form_not_configured]
 other = "The contact form is not configured in this build."
 [form_privacy]

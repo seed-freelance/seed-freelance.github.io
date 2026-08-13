@@ -1,4 +1,41 @@
+{{ $key := getenv "HUGO_WEB3FORMS_KEY" }}
 <section class="contact" id="contact">
   <h2>{{ i18n "section_contact" }}</h2>
-  {{- /* Form rendered in the contact-form milestone. */ -}}
+  {{ if $key }}
+  <form class="contact-form" method="POST" action="{{ site.Params.contact.endpoint }}"
+        data-success="{{ i18n "form_success" }}"
+        data-error="{{ i18n "form_error" }}"
+        data-sending="{{ i18n "form_sending" }}"
+        data-msg-required="{{ i18n "form_required" }}"
+        data-msg-email="{{ i18n "form_invalid_email" }}">
+    <input type="hidden" name="access_key" value="{{ $key }}">
+    <input type="hidden" name="subject" value="{{ i18n "form_subject" }}">
+    <input type="hidden" name="redirect" value="{{ (site.GetPage "/thanks").Permalink }}">
+    <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" aria-hidden="true">
+
+    <div class="form-field">
+      <label for="contact-name">{{ i18n "form_name" }}</label>
+      <input id="contact-name" name="name" type="text" required autocomplete="name" aria-describedby="err-name">
+      <span class="field-error" id="err-name" aria-live="polite"></span>
+    </div>
+
+    <div class="form-field">
+      <label for="contact-email">{{ i18n "form_email" }}</label>
+      <input id="contact-email" name="email" type="email" required autocomplete="email" aria-describedby="err-email">
+      <span class="field-error" id="err-email" aria-live="polite"></span>
+    </div>
+
+    <div class="form-field">
+      <label for="contact-message">{{ i18n "form_message" }}</label>
+      <textarea id="contact-message" name="message" rows="6" required aria-describedby="err-message"></textarea>
+      <span class="field-error" id="err-message" aria-live="polite"></span>
+    </div>
+
+    <p class="form-privacy">{{ i18n "form_privacy" }}</p>
+    <button class="button" type="submit">{{ i18n "form_send" }}</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+  {{ else }}
+  <p class="form-missing">{{ i18n "form_not_configured" }}</p>
+  {{ end }}
 </section>

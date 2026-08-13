@@ -706,6 +706,97 @@ main section:first-child {
   margin: 0;
 }
 
+/* ---------- contact form ---------- */
+
+.contact-form {
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  font-family: var(--font-mono);
+  font-size: var(--step-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.form-field input,
+.form-field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
+}
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+.form-field [aria-invalid="true"] {
+  border-color: #a4262c;
+}
+
+.field-error {
+  font-size: 0.875rem;
+  color: #a4262c;
+  min-height: 1.2em;
+}
+
+.form-privacy {
+  font-family: var(--font-mono);
+  font-size: var(--step-mono);
+  color: var(--muted);
+  margin: 0;
+}
+
+.contact-form .button {
+  align-self: flex-start;
+}
+
+.form-status {
+  min-height: 1.5em;
+  margin: 0;
+  font-weight: 600;
+}
+.form-status.is-success {
+  color: #1c6b40;
+}
+.form-status.is-error {
+  color: #a4262c;
+}
+
+.form-missing {
+  font-family: var(--font-mono);
+  font-size: var(--step-mono);
+  color: var(--muted);
+}
+
+/* ---------- simple page (thanks/merci) ---------- */
+
+.page-simple {
+  min-height: 40vh;
+}
+
 /* ---------- reveal (JS adds classes; final state lives in HTML) ---------- */
 
 .reveal-pending {

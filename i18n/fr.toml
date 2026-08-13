@@ -75,6 +75,8 @@ other = "Une erreur est survenue et le message n'a pas été envoyé. Merci de r
 other = "Ce champ est obligatoire."
 [form_invalid_email]
 other = "Merci de saisir une adresse email valide."
+[form_subject]
+other = "Nouvelle demande via seedfreelance.com"
 [form_not_configured]
 other = "Le formulaire de contact n'est pas configuré dans cette version du site."
 [form_privacy]
