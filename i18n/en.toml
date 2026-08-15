@@ -88,5 +88,3 @@ other = "Your message goes straight to my inbox — no account, no mailing list.
 # Footer
 [footer_technical_profile]
 other = "Technical profile & publications"
-[footer_built_with]
-other = "Designed and built by Pierre Aumjaud with Hugo — this site is part of the portfolio."

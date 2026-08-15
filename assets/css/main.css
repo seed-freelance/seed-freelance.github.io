@@ -738,22 +738,26 @@ main section:first-child {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
-  margin: 0 0 var(--space-2);
+  gap: var(--space-1);
+  margin: 0;
   padding: 0;
+  /* Offset the tap-target padding so icons align with the copyright line. */
+  margin-left: -0.75rem;
 }
 
+/* Icon-only links: the glyph is 20px but the hit area meets the 44px
+   minimum target size (WCAG 2.5.8). */
 .footer-links a {
   color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
 }
 .footer-links a:hover {
   color: var(--ink);
-}
-
-.footer-note {
-  font-family: var(--font-mono);
-  font-size: var(--step-mono);
-  margin: 0;
 }
 
 /* ---------- contact form ---------- */

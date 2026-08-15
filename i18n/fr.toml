@@ -88,5 +88,3 @@ other = "Votre message arrive directement dans ma boîte mail — pas de compte,
 # Footer
 [footer_technical_profile]
 other = "Profil technique & publications"
-[footer_built_with]
-other = "Site conçu et développé par Pierre Aumjaud avec Hugo — il fait lui-même partie du portfolio."
