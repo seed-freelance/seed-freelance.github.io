@@ -1,0 +1,18 @@
+version: 2
+
+# GitHub Actions is the only ecosystem in this repository: the site has no
+# package manifest, and the theme is custom code in layouts/ rather than a
+# Hugo module. The Hugo version itself is pinned in the HUGO_VERSION env var
+# of .github/workflows/deploy.yml and is NOT tracked here — Dependabot has no
+# manifest to read it from, so bump it by hand when upgrading.
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+    # One pull request for all action bumps rather than one per action.
+    groups:
+      github-actions:
+        patterns:
+          - "*"
