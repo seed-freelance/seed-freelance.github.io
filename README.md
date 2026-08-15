@@ -101,12 +101,39 @@ Every push to `main` builds and deploys via `.github/workflows/deploy.yml`
    enable **Enforce HTTPS**. DNS: apex A/ALIAS records to GitHub Pages, or
    follow GitHub's custom-domain guide.
 
+## Brand assets
+
+Sources live in `assets/images/` and are the single point of truth:
+
+| File | Used for |
+|---|---|
+| `logo.png` | Nav brand mark, `ProfessionalService` logo in JSON-LD |
+| `favicon.ico` | Browser tab icon, published to `/favicon.ico` via `resources.Copy` |
+| `prof_pic-1400.webp` | About-section portrait, `Person` image in JSON-LD |
+
+The nav mark is **ink-toned at build time** (`images.Grayscale` + `images.Brightness`
+in `layouts/partials/nav.html`) so the seed motif stays inside the site's ink and
+ultramarine palette — no separate recoloured file to keep in sync.
+
+`static/apple-touch-icon.png` is the one generated derivative that is committed,
+because iOS composites transparency onto black and it must be pre-flattened:
+
+```sh
+magick assets/images/logo.png -resize 164x164 -background '#f7f7f4' \
+  -gravity center -extent 180x180 -alpha remove -alpha off static/apple-touch-icon.png
+```
+
+Portrait alt text is localized via the `about_portrait_alt` key in `i18n/*.toml`.
+
 ## Screenshots
 
 Portfolio screenshots were captured with headless Chrome at a **1440×900
 viewport** and are served through Hugo image processing as WebP srcsets
 (400/800/1200 w) with lazy loading. To refresh one, replace the PNG in its
 bundle — derivatives regenerate at build time.
+
+`assets/og/og-image.png` is a 1200×630 capture of the site's own hero; retake it
+after visual changes by pointing headless Chrome at a local build.
 
 ## Quality numbers (2026-08-13, local build)
 

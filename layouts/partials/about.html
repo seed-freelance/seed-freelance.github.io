@@ -1,4 +1,11 @@
 <section class="about" id="about">
   <h2>{{ i18n "section_about" }}</h2>
-  <div class="about-body">{{ .Content }}</div>
+  <div class="about-grid">
+    {{ with resources.Get "images/prof_pic-1400.webp" }}
+    <figure class="about-portrait">
+      {{ partial "picture.html" (dict "img" . "alt" (i18n "about_portrait_alt") "sizes" "(min-width: 900px) 260px, 60vw") }}
+    </figure>
+    {{ end }}
+    <div class="about-body">{{ .Content }}</div>
+  </div>
 </section>

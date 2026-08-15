@@ -19,6 +19,8 @@
 <meta property="og:image:height" content="{{ .Height }}">
 <meta name="twitter:card" content="summary_large_image">
 {{ end -}}
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{{ with resources.Get "images/favicon.ico" | resources.Copy "/favicon.ico" -}}
+<link rel="icon" href="{{ .RelPermalink }}" sizes="16x16 32x32 48x48">
+{{ end -}}
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {{ if .IsHome }}{{ partial "seo/jsonld.html" . }}{{ end }}

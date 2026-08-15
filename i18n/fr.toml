@@ -14,6 +14,9 @@ other = "Menu"
 [lang_switch_label]
 other = "Read this page in English"
 
+[about_portrait_alt]
+other = "Pierre Aumjaud, ingénieur IA freelance et fondateur de Seed AI."
+
 # Section headings
 [section_about]
 other = "À propos"

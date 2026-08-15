@@ -226,9 +226,18 @@ a:hover {
   color: var(--ink);
   text-decoration: none;
   margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 .brand:hover {
   color: var(--accent);
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  flex: none;
 }
 
 .nav-links {
@@ -310,8 +319,38 @@ main section:first-child {
 
 /* ---------- about ---------- */
 
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: var(--space-5);
+  align-items: start;
+}
+
 .about-body {
   max-width: 62ch;
+}
+
+.about-portrait {
+  margin: 0;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.about-portrait img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .about-portrait {
+    grid-column: 1;
+    max-width: 200px;
+  }
 }
 
 /* ---------- services ---------- */

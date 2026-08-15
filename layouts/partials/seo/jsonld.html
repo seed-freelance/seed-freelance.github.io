@@ -4,6 +4,9 @@
   "url" site.Params.personalSite
   "sameAs" (slice site.Params.social.github site.Params.social.linkedin)
 -}}
+{{- with resources.Get "images/prof_pic-1400.webp" -}}
+{{- $person = merge $person (dict "image" .Permalink) -}}
+{{- end -}}
 {{- $schema := dict
   "@context" "https://schema.org"
   "@type" "ProfessionalService"
@@ -13,4 +16,7 @@
   "founder" $person
   "areaServed" "Europe"
 -}}
+{{- with resources.Get "images/logo.png" -}}
+{{- $schema = merge $schema (dict "logo" .Permalink) -}}
+{{- end -}}
 <script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>

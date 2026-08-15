@@ -2,7 +2,15 @@
 {{ $prefix := cond .IsHome "" $home }}
 <header class="site-header">
   <nav class="nav" aria-label="{{ i18n "menu_toggle" }}">
-    <a class="brand" href="{{ if .IsHome }}#top{{ else }}{{ $home }}{{ end }}">{{ site.Params.brand }}</a>
+    <a class="brand" href="{{ if .IsHome }}#top{{ else }}{{ $home }}{{ end }}">
+      {{- with resources.Get "images/logo.png" -}}
+        {{- /* Ink-toned so the seed mark sits inside the site palette. */ -}}
+        {{- $mark := . | images.Filter (images.Grayscale) (images.Brightness -8) -}}
+        {{- $mark = $mark.Process "resize 64x64 png" }}
+        <img class="brand-mark" src="{{ $mark.RelPermalink }}" alt="" width="32" height="32" loading="eager" decoding="async">
+      {{- end }}
+      <span>{{ site.Params.brand }}</span>
+    </a>
     <ul class="nav-links">
       <li><a href="{{ $prefix }}#about">{{ i18n "nav_about" }}</a></li>
       <li><a href="{{ $prefix }}#services">{{ i18n "nav_services" }}</a></li>
